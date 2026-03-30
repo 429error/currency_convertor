@@ -154,17 +154,17 @@ function App() {
   const convertedAmount = rate ? (amount * rate).toFixed(2) : '—'
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
+    <div className="min-h-screen px-4 py-8">
       <div className="max-w-5xl mx-auto">
-        <header className="text-center mb-8 animate-fadeIn">
+        <header className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-2">
             CurrencyXchange
           </h1>
           <p className="text-slate-400">Real-time currency conversion with live market rates</p>
         </header>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 space-y-6">
+        <div className="flex flex-col md:flex-row justify-center gap-6">
+          <div className="w-full max-w-xl space-y-6">
             <div className="card p-6 animate-fadeIn">
               <div className="flex flex-col md:flex-row gap-4 items-end">
                 <div className="flex-1 w-full">
@@ -338,7 +338,7 @@ function App() {
             </div>
           </div>
 
-          <div className="card p-6 animate-fadeIn h-fit">
+          <div className="card p-6 h-fit w-full max-w-xs shrink-0">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold text-white">Recent</h2>
               {recentConversions.length > 0 && (
@@ -383,7 +383,7 @@ function App() {
           </div>
         </div>
 
-        <footer className="text-center mt-8 text-slate-500 text-sm animate-fadeIn">
+        <footer className="text-center mt-8 text-slate-500 text-sm">
           <p>Exchange rates by <a href="https://www.frankfurter.app" target="_blank" rel="noopener" className="text-cyan-400 hover:underline">Frankfurter</a> • Updated daily from ECB</p>
         </footer>
       </div>
