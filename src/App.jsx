@@ -2,41 +2,50 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts'
 
 const CURRENCIES = [
-  { code: 'USD', name: 'United States Dollar', flag: '🇺🇸' },
-  { code: 'EUR', name: 'Euro', flag: '🇪🇺' },
-  { code: 'GBP', name: 'British Pound', flag: '🇬🇧' },
-  { code: 'JPY', name: 'Japanese Yen', flag: '🇯🇵' },
-  { code: 'INR', name: 'Indian Rupee', flag: '🇮🇳' },
-  { code: 'AUD', name: 'Australian Dollar', flag: '🇦🇺' },
-  { code: 'CAD', name: 'Canadian Dollar', flag: '🇨🇦' },
-  { code: 'CHF', name: 'Swiss Franc', flag: '🇨🇭' },
-  { code: 'CNY', name: 'Chinese Yuan', flag: '🇨🇳' },
-  { code: 'SEK', name: 'Swedish Krona', flag: '🇸🇪' },
-  { code: 'NZD', name: 'New Zealand Dollar', flag: '🇳🇿' },
-  { code: 'MXN', name: 'Mexican Peso', flag: '🇲🇽' },
-  { code: 'SGD', name: 'Singapore Dollar', flag: '🇸🇬' },
-  { code: 'HKD', name: 'Hong Kong Dollar', flag: '🇭🇰' },
-  { code: 'NOK', name: 'Norwegian Krone', flag: '🇳🇴' },
-  { code: 'KRW', name: 'South Korean Won', flag: '🇰🇷' },
-  { code: 'TRY', name: 'Turkish Lira', flag: '🇹🇷' },
-  { code: 'RUB', name: 'Russian Ruble', flag: '🇷🇺' },
-  { code: 'BRL', name: 'Brazilian Real', flag: '🇧🇷' },
-  { code: 'ZAR', name: 'South African Rand', flag: '🇿🇦' },
-  { code: 'DKK', name: 'Danish Krone', flag: '🇩🇰' },
-  { code: 'PLN', name: 'Polish Zloty', flag: '🇵🇱' },
-  { code: 'THB', name: 'Thai Baht', flag: '🇹🇭' },
-  { code: 'IDR', name: 'Indonesian Rupiah', flag: '🇮🇩' },
-  { code: 'HUF', name: 'Hungarian Forint', flag: '🇭🇺' },
-  { code: 'CZK', name: 'Czech Koruna', flag: '🇨🇿' },
-  { code: 'ILS', name: 'Israeli Shekel', flag: '🇮🇱' },
-  { code: 'CLP', name: 'Chilean Peso', flag: '🇨🇱' },
-  { code: 'PHP', name: 'Philippine Peso', flag: '🇵🇭' },
-  { code: 'AED', name: 'UAE Dirham', flag: '🇦🇪' },
-  { code: 'COP', name: 'Colombian Peso', flag: '🇨🇴' },
-  { code: 'SAR', name: 'Saudi Riyal', flag: '🇸🇦' },
-  { code: 'MYR', name: 'Malaysian Ringgit', flag: '🇲🇾' },
-  { code: 'RON', name: 'Romanian Leu', flag: '🇷🇴' },
-].sort((a, b) => a.name.localeCompare(b.name))
+  { code: 'USD', name: 'US Dollar', country: 'United States', flag: '🇺🇸' },
+  { code: 'EUR', name: 'Euro', country: 'European Union', flag: '🇪🇺' },
+  { code: 'GBP', name: 'British Pound', country: 'United Kingdom', flag: '🇬🇧' },
+  { code: 'JPY', name: 'Japanese Yen', country: 'Japan', flag: '🇯🇵' },
+  { code: 'INR', name: 'Indian Rupee', country: 'India', flag: '🇮🇳' },
+  { code: 'AUD', name: 'Australian Dollar', country: 'Australia', flag: '🇦🇺' },
+  { code: 'CAD', name: 'Canadian Dollar', country: 'Canada', flag: '🇨🇦' },
+  { code: 'CHF', name: 'Swiss Franc', country: 'Switzerland', flag: '🇨🇭' },
+  { code: 'CNY', name: 'Chinese Yuan', country: 'China', flag: '🇨🇳' },
+  { code: 'SEK', name: 'Swedish Krona', country: 'Sweden', flag: '🇸🇪' },
+  { code: 'NZD', name: 'New Zealand Dollar', country: 'New Zealand', flag: '🇳🇿' },
+  { code: 'MXN', name: 'Mexican Peso', country: 'Mexico', flag: '🇲🇽' },
+  { code: 'SGD', name: 'Singapore Dollar', country: 'Singapore', flag: '🇸🇬' },
+  { code: 'HKD', name: 'Hong Kong Dollar', country: 'Hong Kong', flag: '🇭🇰' },
+  { code: 'NOK', name: 'Norwegian Krone', country: 'Norway', flag: '🇳🇴' },
+  { code: 'KRW', name: 'South Korean Won', country: 'South Korea', flag: '🇰🇷' },
+  { code: 'TRY', name: 'Turkish Lira', country: 'Turkey', flag: '🇹🇷' },
+  { code: 'RUB', name: 'Russian Ruble', country: 'Russia', flag: '🇷🇺' },
+  { code: 'BRL', name: 'Brazilian Real', country: 'Brazil', flag: '🇧🇷' },
+  { code: 'ZAR', name: 'South African Rand', country: 'South Africa', flag: '🇿🇦' },
+  { code: 'DKK', name: 'Danish Krone', country: 'Denmark', flag: '🇩🇰' },
+  { code: 'PLN', name: 'Polish Zloty', country: 'Poland', flag: '🇵🇱' },
+  { code: 'THB', name: 'Thai Baht', country: 'Thailand', flag: '🇹🇭' },
+  { code: 'IDR', name: 'Indonesian Rupiah', country: 'Indonesia', flag: '🇮🇩' },
+  { code: 'HUF', name: 'Hungarian Forint', country: 'Hungary', flag: '🇭🇺' },
+  { code: 'CZK', name: 'Czech Koruna', country: 'Czech Republic', flag: '🇨🇿' },
+  { code: 'ILS', name: 'Israeli Shekel', country: 'Israel', flag: '🇮🇱' },
+  { code: 'CLP', name: 'Chilean Peso', country: 'Chile', flag: '🇨🇱' },
+  { code: 'PHP', name: 'Philippine Peso', country: 'Philippines', flag: '🇵🇭' },
+  { code: 'AED', name: 'UAE Dirham', country: 'UAE', flag: '🇦🇪' },
+  { code: 'COP', name: 'Colombian Peso', country: 'Colombia', flag: '🇨🇴' },
+  { code: 'SAR', name: 'Saudi Riyal', country: 'Saudi Arabia', flag: '🇸🇦' },
+  { code: 'MYR', name: 'Malaysian Ringgit', country: 'Malaysia', flag: '🇲🇾' },
+  { code: 'RON', name: 'Romanian Leu', country: 'Romania', flag: '🇷🇴' },
+  { code: 'VND', name: 'Vietnamese Dong', country: 'Vietnam', flag: '🇻🇳' },
+  { code: 'EGP', name: 'Egyptian Pound', country: 'Egypt', flag: '🇪🇬' },
+  { code: 'PKR', name: 'Pakistani Rupee', country: 'Pakistan', flag: '🇵🇰' },
+  { code: 'BDT', name: 'Bangladeshi Taka', country: 'Bangladesh', flag: '🇧🇩' },
+  { code: 'NGN', name: 'Nigerian Naira', country: 'Nigeria', flag: '🇳🇬' },
+  { code: 'UAH', name: 'Ukrainian Hryvnia', country: 'Ukraine', flag: '🇺🇦' },
+  { code: 'PEN', name: 'Peruvian Sol', country: 'Peru', flag: '🇵🇪' },
+  { code: 'KWD', name: 'Kuwaiti Dinar', country: 'Kuwait', flag: '🇰🇼' },
+  { code: 'QAR', name: 'Qatari Riyal', country: 'Qatar', flag: '🇶🇦' },
+].sort((a, b) => a.country.localeCompare(b.country))
 
 const API_BASE = 'https://api.frankfurter.app'
 
@@ -154,8 +163,8 @@ function App() {
   const convertedAmount = rate ? (amount * rate).toFixed(2) : '—'
 
   return (
-    <div className="min-h-screen px-4 py-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen px-4 py-8 flex flex-col items-center">
+      <div className="w-full max-w-4xl">
         <header className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-2">
             CurrencyXchange
@@ -163,11 +172,11 @@ function App() {
           <p className="text-slate-400">Real-time currency conversion with live market rates</p>
         </header>
 
-        <div className="flex flex-col md:flex-row justify-center gap-6">
-          <div className="w-full max-w-xl space-y-6">
-            <div className="card p-6 animate-fadeIn">
-              <div className="flex flex-col md:flex-row gap-4 items-end">
-                <div className="flex-1 w-full">
+        <div className="flex flex-col xl:flex-row justify-end items-start gap-8 w-full max-w-5xl">
+          <section className="flex-1 max-w-3xl w-full space-y-8">
+            <div className="card p-8">
+              <div className="flex flex-wrap lg:flex-nowrap gap-4 items-end">
+                <div className="flex-1 min-w-[140px]">
                   <label className="block text-sm text-slate-400 mb-2">Amount</label>
                   <input
                     type="number"
@@ -180,7 +189,7 @@ function App() {
                   />
                 </div>
                 
-                <div className="flex-1 w-full">
+                <div className="flex-1 min-w-[180px]">
                   <CurrencyDropdown
                     label="From"
                     value={fromCurrency}
@@ -198,7 +207,7 @@ function App() {
                   </svg>
                 </button>
 
-                <div className="flex-1 w-full">
+                <div className="flex-1 min-w-[180px]">
                   <CurrencyDropdown
                     label="To"
                     value={toCurrency}
@@ -208,7 +217,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 rounded-xl border border-cyan-500/20">
+              <div className="mt-8 p-6 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 rounded-xl border border-cyan-500/20">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-slate-400 text-sm">Converted Amount</p>
@@ -238,8 +247,8 @@ function App() {
               </div>
             </div>
 
-            <div className="card p-6 animate-fadeIn">
-              <div className="flex items-center justify-between mb-4">
+            <div className="card p-8">
+              <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-white">Exchange Rate Trend</h2>
                 <div className="flex gap-2">
                   {[7, 30, 90].map((days) => (
@@ -336,9 +345,9 @@ function App() {
                 </div>
               )}
             </div>
-          </div>
+          </section>
 
-          <div className="card p-6 h-fit w-full max-w-xs shrink-0">
+          <aside className="card p-8 h-fit w-full max-w-xs shrink-0">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold text-white">Recent</h2>
               {recentConversions.length > 0 && (
@@ -380,7 +389,7 @@ function App() {
                 ))}
               </div>
             )}
-          </div>
+          </aside>
         </div>
 
         <footer className="text-center mt-8 text-slate-500 text-sm">
@@ -398,6 +407,7 @@ function CurrencyDropdown({ label, value, onChange, currencies }) {
 
   const filtered = currencies.filter(
     c => c.code.toLowerCase().includes(search.toLowerCase()) ||
+         c.country.toLowerCase().includes(search.toLowerCase()) ||
          c.name.toLowerCase().includes(search.toLowerCase())
   )
 
@@ -423,7 +433,8 @@ function CurrencyDropdown({ label, value, onChange, currencies }) {
       >
         <span className="flex items-center gap-2">
           <span className="text-xl">{selected?.flag}</span>
-          <span className="font-mono text-white">{selected?.code}</span>
+          <span className="text-white">{selected?.country}</span>
+          <span className="text-slate-500 text-sm">({selected?.code})</span>
         </span>
         <svg className={`w-5 h-5 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -456,8 +467,8 @@ function CurrencyDropdown({ label, value, onChange, currencies }) {
                 }`}
               >
                 <span className="text-xl">{curr.flag}</span>
-                <span className="font-mono">{curr.code}</span>
-                <span className="text-slate-400 text-sm truncate">{curr.name}</span>
+                <span className="flex-1">{curr.country}</span>
+                <span className="text-slate-500 text-sm font-mono">{curr.code}</span>
               </button>
             ))}
           </div>
