@@ -172,11 +172,11 @@ function App() {
           <p className="text-slate-400">Real-time currency conversion with live market rates</p>
         </header>
 
-        <div className="flex flex-col xl:flex-row justify-end items-start gap-8 w-full max-w-5xl">
-          <section className="flex-1 max-w-3xl w-full space-y-8">
-            <div className="card p-8">
-              <div className="flex flex-wrap lg:flex-nowrap gap-4 items-end">
-                <div className="flex-1 min-w-[140px]">
+        <div className="flex flex-col xl:flex-row justify-end items-start gap-12 w-full max-w-5xl">
+          <section className="flex-1 max-w-3xl w-full space-y-10">
+            <div className="card p-10">
+              <div className="flex flex-wrap lg:flex-nowrap items-end gap-6">
+                <div className="flex-1 min-w-[160px]">
                   <label className="block text-sm text-slate-400 mb-2">Amount</label>
                   <input
                     type="number"
@@ -189,7 +189,7 @@ function App() {
                   />
                 </div>
                 
-                <div className="flex-1 min-w-[180px]">
+                <div className="flex-1 min-w-[160px]">
                   <CurrencyDropdown
                     label="From"
                     value={fromCurrency}
@@ -207,7 +207,7 @@ function App() {
                   </svg>
                 </button>
 
-                <div className="flex-1 min-w-[180px]">
+                <div className="flex-1 min-w-[160px]">
                   <CurrencyDropdown
                     label="To"
                     value={toCurrency}
@@ -217,7 +217,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="mt-8 p-6 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 rounded-xl border border-cyan-500/20">
+              <div className="mt-10 p-6 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 rounded-xl border border-cyan-500/20">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-slate-400 text-sm">Converted Amount</p>
@@ -247,7 +247,7 @@ function App() {
               </div>
             </div>
 
-            <div className="card p-8">
+            <div className="card p-10">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-white">Exchange Rate Trend</h2>
                 <div className="flex gap-2">
@@ -347,7 +347,7 @@ function App() {
             </div>
           </section>
 
-          <aside className="card p-8 h-fit w-full max-w-xs shrink-0">
+          <aside className="card p-10 h-fit w-full max-w-xs shrink-0">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold text-white">Recent</h2>
               {recentConversions.length > 0 && (
