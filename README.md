@@ -1,5 +1,24 @@
-## Currency converter 
-built this currency converter webapp "CurrencyXchange" that converts the currency and also displays the 7,30,90 day conversion trend in for of chart for the respective currency converted
+## CurrencyXchange
+A React based currency converter with live exchange rates and trend charts for 7 ,30  ,90 days respectively.
 
-## Stack used 
-React +Vite
+## features
+--Real-time currency conversion
+--7,30,90 days excahnge rate trend chart
+--Recent conversion history(stored locally)
+
+## Tech Stack 
+--React + Vite
+--Tailwind CSS
+--Recharts
+--Frankfurter API (free, no key required)
+
+## Setup
+```bash
+npm install
+npm run dev
+```
+
+## Build
+'''bash
+npm run build
+'''
