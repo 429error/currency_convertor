@@ -52,7 +52,7 @@ const API_BASE = 'https://api.frankfurter.app'
 function App() {
   const [amount, setAmount] = useState(1)
   const [fromCurrency, setFromCurrency] = useState('USD')
-  const [toCurrency, setToCurrency] = useState('EUR')
+  const [toCurrency, setToCurrency] = useState('INR')
   const [rate, setRate] = useState(null)
   const [historicalData, setHistoricalData] = useState([])
   const [recentConversions, setRecentConversions] = useState([])
@@ -164,7 +164,7 @@ function App() {
 
   return (
     <div className="min-h-screen px-4 py-8 flex flex-col items-center">
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-7xl mx-auto">
         <header className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-2">
             CurrencyXchange
@@ -172,11 +172,11 @@ function App() {
           <p className="text-slate-400">Real-time currency conversion with live market rates</p>
         </header>
 
-        <div className="flex flex-col xl:flex-row justify-end items-start gap-12 w-full max-w-5xl">
-          <section className="flex-1 max-w-3xl w-full space-y-10">
-            <div className="card p-10">
-              <div className="flex flex-wrap lg:flex-nowrap items-end gap-6">
-                <div className="flex-1 min-w-[160px]">
+        <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-8 w-full">
+          <section className="flex-1 max-w-2xl mx-auto lg:mx-0 space-y-8">
+            <div className="card p-6 md:p-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+                <div className="w-full">
                   <label className="block text-sm text-slate-400 mb-2">Amount</label>
                   <input
                     type="number"
@@ -189,7 +189,7 @@ function App() {
                   />
                 </div>
                 
-                <div className="flex-1 min-w-[160px]">
+                <div className="w-full">
                   <CurrencyDropdown
                     label="From"
                     value={fromCurrency}
@@ -200,14 +200,14 @@ function App() {
 
                 <button
                   onClick={handleSwap}
-                  className="swap-btn p-3 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors"
+                  className="swap-btn p-3 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors mx-auto lg:mx-1"
                 >
-                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  <svg className="w-32 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h14m4 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
                 </button>
 
-                <div className="flex-1 min-w-[160px]">
+                <div className="w-full">
                   <CurrencyDropdown
                     label="To"
                     value={toCurrency}
@@ -217,22 +217,22 @@ function App() {
                 </div>
               </div>
 
-              <div className="mt-10 p-6 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 rounded-xl border border-cyan-500/20">
-                <div className="flex items-center justify-between">
+              <div className="mt-6 md:mt-10 p-6 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 rounded-xl border border-cyan-500/20">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
                     <p className="text-slate-400 text-sm">Converted Amount</p>
-                    <p className="text-3xl md:text-4xl font-mono font-bold text-white mt-1">
+                    <p className="text-2xl md:text-4xl font-mono font-bold text-white mt-1">
                       {loading ? (
                         <span className="text-cyan-400">Loading...</span>
                       ) : (
                         <span className="text-cyan-400">{convertedAmount}</span>
                       )}
-                      <span className="text-lg text-slate-400 ml-2">{toCurrency}</span>
+                      <span className="text-base md:text-lg text-slate-400 ml-2">{toCurrency}</span>
                     </p>
                   </div>
                   <button
                     onClick={handleConvert}
-                    className="btn-primary px-6 py-3 rounded-xl text-lg"
+                    className="btn-primary px-6 py-3 rounded-xl text-lg w-full sm:w-auto"
                   >
                     Save Conversion
                   </button>
@@ -247,8 +247,8 @@ function App() {
               </div>
             </div>
 
-            <div className="card p-10">
-              <div className="flex items-center justify-between mb-6">
+            <div className="card p-6 md:p-10">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <h2 className="text-xl font-semibold text-white">Exchange Rate Trend</h2>
                 <div className="flex gap-2">
                   {[7, 30, 90].map((days) => (
@@ -267,7 +267,7 @@ function App() {
                 </div>
               </div>
               
-              <div className="h-64">
+              <div className="h-48 sm:h-64">
                 {chartLoading ? (
                   <div className="h-full flex items-center justify-center">
                     <div className="animate-pulse text-slate-400">Loading chart...</div>
@@ -347,7 +347,7 @@ function App() {
             </div>
           </section>
 
-          <aside className="card p-10 h-fit w-full max-w-xs shrink-0">
+          <aside className="card p-6 md:p-8 h-fit w-full lg:max-w-xs shrink-0">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold text-white">Recent</h2>
               {recentConversions.length > 0 && (
@@ -392,7 +392,7 @@ function App() {
           </aside>
         </div>
 
-        <footer className="text-center mt-8 text-slate-500 text-sm">
+        <footer className="text-center mt-8 text-slate-500 text-sm pb-4">
           <p>Exchange rates by <a href="https://www.frankfurter.app" target="_blank" rel="noopener" className="text-cyan-400 hover:underline">Frankfurter</a> • Updated daily from ECB</p>
         </footer>
       </div>
@@ -425,18 +425,18 @@ function CurrencyDropdown({ label, value, onChange, currencies }) {
   }, [])
 
   return (
-    <div className="relative w-full" ref={dropdownRef}>
+    <div className="relative w-full min-w-[180px]" ref={dropdownRef}>
       <label className="block text-sm text-slate-400 mb-2">{label}</label>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-4 py-3 text-left flex items-center justify-between hover:border-slate-600 transition-colors"
+        className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-4 py-3 text-left flex items-center justify-between hover:border-slate-600 transition-colors min-h-[52px]"
       >
-        <span className="flex items-center gap-2">
-          <span className="text-xl">{selected?.flag}</span>
-          <span className="text-white">{selected?.country}</span>
-          <span className="text-slate-500 text-sm">({selected?.code})</span>
+        <span className="flex items-center gap-2 truncate">
+          <span className="text-xl shrink-0">{selected?.flag}</span>
+          <span className="text-white truncate">{selected?.country}</span>
+          <span className="text-slate-500 text-sm shrink-0">({selected?.code})</span>
         </span>
-        <svg className={`w-5 h-5 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className={`w-5 h-5 text-slate-400 transition-transform shrink-0 ml-2 ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
