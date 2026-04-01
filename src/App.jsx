@@ -163,8 +163,8 @@ function App() {
   const convertedAmount = rate ? (amount * rate).toFixed(2) : '—'
 
   return (
-    <div className="min-h-screen px-4 py-8 flex flex-col items-center">
-      <div className="w-full max-w-7xl mx-auto">
+<div className="h-full w-full px-4 py-8 flex flex-col items-center overflow-x-hidden">
+      <div className="w-full max-w-8xl mx-auto">
         <header className="text-center mb-6">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-2">
             CurrencyXchange
@@ -172,7 +172,7 @@ function App() {
           <p className="text-slate-400">Real-time currency conversion with live market rates</p>
         </header>
 
-        <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-3 w-full">
+        <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-7 w-full">
           <section className="flex-1 max-w-2xl mx-auto lg:mx-0 space-y-8">
             <div className="card p-6 md:p-10">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 items-end">
@@ -200,9 +200,9 @@ function App() {
 
                 <button
                   onClick={handleSwap}
-                  className="swap-btn p-3 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors mx-auto lg:mx-1"
+                   className="swap-btn p-4 rounded-xl hover:bg-slate-700 transition-colors mx-auto lg:mx-1"
                 >
-                  <svg className="w-32 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-35 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h14m4 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
                 </button>
@@ -394,6 +394,8 @@ function App() {
 
         <footer className="text-center mt-8 text-slate-500 text-sm pb-4">
           <p>Exchange rates by <a href="https://www.frankfurter.app" target="_blank" rel="noopener" className="text-cyan-400 hover:underline">Frankfurter</a> • Updated daily from ECB</p>
+          <p>Made by Sneha Raj</p>
+
         </footer>
       </div>
     </div>
