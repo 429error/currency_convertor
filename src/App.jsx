@@ -175,7 +175,7 @@ function App() {
         <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-8 w-full">
           <section className="flex-1 max-w-2xl mx-auto lg:mx-0 space-y-8">
             <div className="card p-6 md:p-10">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 items-end">
                 <div className="w-full">
                   <label className="block text-sm text-slate-400 mb-2">Amount</label>
                   <input

@@ -17,8 +17,8 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 10;
+  padding: 5;
   box-sizing: border-box;
 }
 
@@ -38,7 +38,7 @@ body {
 
 .card {
   background: var(--bg-card);
-  border: 5px solid var(--border);
+  border: 3px solid var(--border);
   border-radius: 16px;
   transition: all 0.2s ease;
 }
@@ -80,13 +80,13 @@ body {
   background: rgba(34, 211, 238, 0.1);
 }
 
-/* .swap-btn {
+.swap-btn {
   transition: transform 0.3s ease;
-} */
+} 
 
-.swap-btn:hover {
+/* .swap-btn:hover {
   transform: rotate(180deg);
-}
+} */
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
