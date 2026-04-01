@@ -165,14 +165,14 @@ function App() {
   return (
     <div className="min-h-screen px-4 py-8 flex flex-col items-center">
       <div className="w-full max-w-7xl mx-auto">
-        <header className="text-center mb-8">
+        <header className="text-center mb-6">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-2">
             CurrencyXchange
           </h1>
           <p className="text-slate-400">Real-time currency conversion with live market rates</p>
         </header>
 
-        <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-8 w-full">
+        <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-3 w-full">
           <section className="flex-1 max-w-2xl mx-auto lg:mx-0 space-y-8">
             <div className="card p-6 md:p-10">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 items-end">
