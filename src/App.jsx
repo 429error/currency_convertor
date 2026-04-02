@@ -182,7 +182,7 @@ function App() {
                     type="number"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-5 py-4 text-xl font-mono text-white input-glow"
+                    className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-6 py-5 text-xl font-mono text-white input-glow"
                     placeholder="Enter amount"
                     min="0"
                     step="any"
@@ -367,7 +367,7 @@ function App() {
                   <button
                     key={conv.id}
                     onClick={() => loadRecentConversion(conv)}
-                    className="w-full text-left p-4 bg-[#0a0a0f] rounded-xl hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-700"
+                    className="w-full text-left p-5 bg-[#0a0a0f] rounded-xl hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-700"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -430,7 +430,7 @@ function CurrencyDropdown({ label, value, onChange, currencies }) {
       <label className="block text-sm text-slate-400 mb-2">{label}</label>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-5 py-4 text-left flex items-center justify-between hover:border-slate-600 transition-colors min-h-[52px]"
+        className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-6 py-5 text-left flex items-center justify-between hover:border-slate-600 transition-colors min-h-[52px]"
       >
         <span className="flex items-center gap-2 truncate">
           <span className="text-xl shrink-0">{selected?.flag}</span>
