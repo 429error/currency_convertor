@@ -175,8 +175,8 @@ function App() {
         <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-4 w-full">
           <section className="flex-1 max-w-2xl mx-auto lg:mx-0 space-y-8">
             <div className="card p-6 md:p-10">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 items-end">
-                <div className="w-full">
+              <div className="flex flex-col sm:flex-row gap-3 items-end">
+                <div className="flex-1 min-w-0">
                   <label className="block text-sm text-slate-400 mb-2">Amount</label>
                   <input
                     type="number"
@@ -189,7 +189,7 @@ function App() {
                   />
                 </div>
                 
-                <div className="w-full">
+                <div className="flex-1 min-w-0">
                   <CurrencyDropdown
                     label="From"
                     value={fromCurrency}
@@ -200,14 +200,14 @@ function App() {
 
                 <button
                   onClick={handleSwap}
-                   className="swap-btn p-4 rounded-xl hover:bg-slate-700 transition-colors mx-auto lg:mx-1"
+                   className="swap-btn p-3 rounded-xl hover:bg-slate-700 transition-colors flex-shrink-0"
                 >
-                  <svg className="w-35 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h14m4 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
                 </button>
 
-                <div className="w-full">
+                <div className="flex-1 min-w-0">
                   <CurrencyDropdown
                     label="To"
                     value={toCurrency}
