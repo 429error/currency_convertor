@@ -165,7 +165,7 @@ function App() {
   return (
    <div className="h-full w-full px-4 py-8 flex flex-col items-center overflow-x-hidden">
       <div className="w-full max-w-7xl mx-auto">
-        <header className="text-center mb-6">
+        <header className="text-center mb-12 pt-4">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-2">
             CurrencyXchange
           </h1>
@@ -182,7 +182,7 @@ function App() {
                     type="number"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-4 py-3 text-xl font-mono text-white input-glow"
+                    className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-5 py-4 text-xl font-mono text-white input-glow"
                     placeholder="Enter amount"
                     min="0"
                     step="any"
@@ -203,7 +203,7 @@ function App() {
                    className="swap-btn p-3 rounded-xl hover:bg-slate-700 transition-colors flex-shrink-0 h-12"
                 >
                   <svg className="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
-                    <path d="M7 16V4m0 0L3 8m0 0l4 4m10-4v12m0 0l4-4m0 0l-4-4" />
+                    <path d="M7 16h10m0 0l-4-4m4 4l-4 4M17 8H7m0 0l4 4m-4-4l4-4" />
                   </svg>
                 </button>
 
@@ -368,7 +368,7 @@ function App() {
                   <button
                     key={conv.id}
                     onClick={() => loadRecentConversion(conv)}
-                    className="w-full text-left p-3 bg-[#0a0a0f] rounded-xl hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-700"
+                    className="w-full text-left p-4 bg-[#0a0a0f] rounded-xl hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-700"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -431,7 +431,7 @@ function CurrencyDropdown({ label, value, onChange, currencies }) {
       <label className="block text-sm text-slate-400 mb-2">{label}</label>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-4 py-3 text-left flex items-center justify-between hover:border-slate-600 transition-colors min-h-[52px]"
+        className="w-full bg-[#0a0a0f] border border-slate-700 rounded-xl px-5 py-4 text-left flex items-center justify-between hover:border-slate-600 transition-colors min-h-[52px]"
       >
         <span className="flex items-center gap-2 truncate">
           <span className="text-xl shrink-0">{selected?.flag}</span>
