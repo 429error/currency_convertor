@@ -163,13 +163,13 @@ function App() {
   const convertedAmount = rate ? (amount * rate).toFixed(2) : '—'
 
   return (
-    <div className="h-full w-full px-4 py-8 flex flex-col items-center overflow-x-hidden">
+    <div className="h-full w-full px-4 py-12 flex flex-col items-center overflow-x-hidden">
       <div className="w-full max-w-7xl mx-auto">
-        <header className="text-center mb-12 pt-4">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-2">
+        <header className="text-center mb-20 pt-8">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-3">
             CurrencyXchange
           </h1>
-          <p className="text-slate-400">Real-time currency conversion with live market rates</p>
+          <p className="text-slate-400 text-lg">Real-time currency conversion with live market rates</p>
         </header>
 
         <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-4 w-full">
