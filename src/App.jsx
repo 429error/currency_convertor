@@ -172,8 +172,8 @@ function App() {
           <p className="text-slate-400 text-lg">Real-time currency conversion with live market rates</p>
         </header>
 
-        <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-4 w-full">
-          <section className="flex-1 max-w-2xl mx-auto lg:mx-0 space-y-8">
+        <div className="flex flex-col lg:flex-row justify-center lg:items-start gap-4 w-full max-w-2xl mx-auto lg:max-w-7xl">
+          <section className="flex-1 w-full space-y-8">
             <div className="card p-6 md:p-10">
               <div className="flex flex-col sm:flex-row gap-5 items-center">
                 <div className="flex-1 min-w-0">
@@ -346,7 +346,7 @@ function App() {
             </div>
           </section>
 
-          <aside className="card p-6 md:p-8 h-fit w-full sm:max-w-sm lg:max-w-xs shrink-0 mx-auto lg:mx-0">
+          <aside className="card p-6 md:p-8 h-fit w-full lg:max-w-xs shrink-0">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold text-white">Recent</h2>
               {recentConversions.length > 0 && (
