@@ -98,13 +98,13 @@ function App() {
       const endDate = new Date()
       const startDate = new Date()
       startDate.setDate(startDate.getDate() - timeRange)
-      
+
       const startStr = startDate.toISOString().split('T')[0]
       const endStr = endDate.toISOString().split('T')[0]
-      
+
       const res = await fetch(`${API_BASE}/${startStr}..${endStr}?from=${fromCurrency}&to=${toCurrency}`)
       const data = await res.json()
-      
+
       const chartData = Object.entries(data.rates).map(([date, rates]) => ({
         date: new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
         rate: rates[toCurrency]
@@ -127,7 +127,7 @@ function App() {
 
   const handleConvert = () => {
     if (!rate || !amount) return
-    
+
     const result = (amount * rate).toFixed(2)
     const newConversion = {
       id: Date.now(),
@@ -138,7 +138,7 @@ function App() {
       rate: rate.toFixed(4),
       timestamp: new Date().toISOString()
     }
-    
+
     const updated = [newConversion, ...recentConversions].slice(0, 10)
     setRecentConversions(updated)
     localStorage.setItem('recentConversions', JSON.stringify(updated))
@@ -163,7 +163,7 @@ function App() {
   const convertedAmount = rate ? (amount * rate).toFixed(2) : '—'
 
   return (
-   <div className="h-full w-full px-4 py-8 flex flex-col items-center overflow-x-hidden">
+    <div className="h-full w-full px-4 py-8 flex flex-col items-center overflow-x-hidden">
       <div className="w-full max-w-7xl mx-auto">
         <header className="text-center mb-12 pt-4">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent mb-2">
@@ -188,7 +188,7 @@ function App() {
                     step="any"
                   />
                 </div>
-                
+
                 <div className="flex-1 min-w-0">
                   <CurrencyDropdown
                     label="From"
@@ -200,7 +200,7 @@ function App() {
 
                 <button
                   onClick={handleSwap}
-                   className="swap-btn p-3 rounded-xl hover:bg-slate-700 transition-colors flex-shrink-0 h-12"
+                  className="swap-btn p-3 rounded-xl hover:bg-slate-700 transition-colors flex-shrink-0 h-12"
                 >
                   <svg className="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
                     <path d="M7 16h10m0 0l-4-4m4 4l-4 4M17 8H7m0 0l4 4m-4-4l4-4" />
@@ -255,18 +255,17 @@ function App() {
                     <button
                       key={days}
                       onClick={() => setTimeRange(days)}
-                      className={`px-3 py-1 rounded-lg text-sm transition-colors ${
-                        timeRange === days
-                          ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30'
-                          : 'bg-slate-800 text-slate-400 hover:text-white'
-                      }`}
+                      className={`px-3 py-1 rounded-lg text-sm transition-colors ${timeRange === days
+                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30'
+                        : 'bg-slate-800 text-slate-400 hover:text-white'
+                        }`}
                     >
                       {days}D
                     </button>
                   ))}
                 </div>
               </div>
-              
+
               <div className="h-48 sm:h-64">
                 {chartLoading ? (
                   <div className="h-full flex items-center justify-center">
@@ -277,19 +276,19 @@ function App() {
                     <AreaChart data={historicalData}>
                       <defs>
                         <linearGradient id="colorRate" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#22d3ee" stopOpacity={0.3}/>
-                          <stop offset="95%" stopColor="#22d3ee" stopOpacity={0}/>
+                          <stop offset="5%" stopColor="#22d3ee" stopOpacity={0.3} />
+                          <stop offset="95%" stopColor="#22d3ee" stopOpacity={0} />
                         </linearGradient>
                       </defs>
-                      <XAxis 
-                        dataKey="date" 
-                        stroke="#64748b" 
+                      <XAxis
+                        dataKey="date"
+                        stroke="#64748b"
                         fontSize={12}
                         tickLine={false}
                         axisLine={false}
                       />
-                      <YAxis 
-                        stroke="#64748b" 
+                      <YAxis
+                        stroke="#64748b"
                         fontSize={12}
                         tickLine={false}
                         axisLine={false}
@@ -321,7 +320,7 @@ function App() {
                   </div>
                 )}
               </div>
-              
+
               {historicalData.length > 0 && (
                 <div className="flex gap-6 mt-4 text-sm">
                   <div>
@@ -359,7 +358,7 @@ function App() {
                 </button>
               )}
             </div>
-            
+
             {recentConversions.length === 0 ? (
               <p className="text-slate-500 text-sm">No recent conversions</p>
             ) : (
@@ -409,8 +408,8 @@ function CurrencyDropdown({ label, value, onChange, currencies }) {
 
   const filtered = currencies.filter(
     c => c.code.toLowerCase().includes(search.toLowerCase()) ||
-         c.country.toLowerCase().includes(search.toLowerCase()) ||
-         c.name.toLowerCase().includes(search.toLowerCase())
+      c.country.toLowerCase().includes(search.toLowerCase()) ||
+      c.name.toLowerCase().includes(search.toLowerCase())
   )
 
   const selected = currencies.find(c => c.code === value)
@@ -464,9 +463,8 @@ function CurrencyDropdown({ label, value, onChange, currencies }) {
                   setIsOpen(false)
                   setSearch('')
                 }}
-                className={`w-full px-4 py-2 text-left flex items-center gap-3 hover:bg-cyan-500/10 transition-colors ${
-                  curr.code === value ? 'bg-cyan-500/20 text-cyan-400' : 'text-white'
-                }`}
+                className={`w-full px-4 py-2 text-left flex items-center gap-3 hover:bg-cyan-500/10 transition-colors ${curr.code === value ? 'bg-cyan-500/20 text-cyan-400' : 'text-white'
+                  }`}
               >
                 <span className="text-xl">{curr.flag}</span>
                 <span className="flex-1">{curr.country}</span>
