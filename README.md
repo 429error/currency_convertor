@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ## CurrencyXchange
 A React based currency converter with live exchange rates and trend charts for 7 ,30  ,90 days respectively.
 
