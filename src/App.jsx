@@ -36,7 +36,7 @@ const CURRENCIES = [
 ].sort((a, b) => a.country.localeCompare(b.country))
 
 
-const API_BASE = 'https://api.frankfurter.app'
+const API_BASE = 'https://api.frankfurter.dev/v1'
 
 
 function App() {
