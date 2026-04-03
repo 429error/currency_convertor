@@ -1,6 +1,9 @@
 ## CurrencyXchange
 A React based currency converter with live exchange rates and trend charts for 7 ,30  ,90 days respectively.
 
+## Live preview
+[view here](https://currencyxchange-blue.vercel.app/)
+
 ## features
 --Real-time currency conversion
 --7,30,90 days excahnge rate trend chart
