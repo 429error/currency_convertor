@@ -15,7 +15,7 @@ A React based currency converter with live exchange rates and trend charts for 7
 --Recharts
 --Frankfurter API (free, no key required)
 
-
+   
 ```bash
 npm install
 npm run dev
