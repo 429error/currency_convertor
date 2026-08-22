@@ -17,7 +17,7 @@ A React based currency converter with live exchange rates and trend charts for 7
 
    
 ```bash
-npm install
+npm install  
 npm run dev
 ```
 
